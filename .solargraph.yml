@@ -1,0 +1,12 @@
+include:
+  - "**/*.rb"
+  - "**/*.rake"
+exclude:
+  - "log/**/*"
+  - "tmp/**/*"
+require:
+  - active_support
+  - active_record
+  - action_pack
+  - action_view
+  - action_mailer
