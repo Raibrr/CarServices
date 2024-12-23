@@ -1,0 +1,44 @@
+<%= form_with(model: [@car, @maintenance_car_service],  url: (@car ? car_maintenance_car_services_path(@car) : maintenance_car_services_path), class: "contents") do |form| %>
+  <% if maintenance_car_service.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(maintenance_car_service.errors.count, "error") %> prohibited this maintenance_car_service from being saved:</h2>
+
+      <ul>
+        <% maintenance_car_service.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="flex-col">
+    <div>
+      <%= form.label :descripcion_label, "Agrega la descripcion del servicio"%>
+      <%= form.text_area :description, rows: 5, class: "w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" %>
+    </div>
+    <div>
+      <%= form.label :date_label, "Fecha en que se realizo"%>
+      <%= form.date_field :date %>
+    </div>
+
+    <div>
+      <%= form.label :date_label, "Estado actual"%>
+      <%= form.select :status, 
+                options_for_select(MaintenanceCarService.statuses.keys.map { |key| [key.humanize, key] }, form.object.status), 
+                {}, 
+                class: "border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" %>
+    </div>
+
+    
+    <% unless @is_nested_url %>
+      <div>
+        <%= form.label :car_list_label, "Vehiculo a asignar"%>
+        <%= form.select :car_id, 
+                  options_for_select(@car_list.presence || []), 
+                  {}, 
+                  class: "border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" %>
+      </div>
+    <% end %>
+  </div>
+  <%= form.submit class: "my-4 rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+<% end %>

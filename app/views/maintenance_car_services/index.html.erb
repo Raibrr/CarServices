@@ -1,0 +1,62 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <% content_for :title, "Maintenance car services" %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Lista de Servicios</h1>
+    <%= link_to "Agregar mantenimiento", new_maintenance_car_service_path, class: "rounded-lg py-3 px-5 bg-green-600 text-white block font-medium" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form_with url: maintenance_car_services_path, method: :get, local: true, class: "flex gap-3" do |form| %>
+      <div>
+        <%= form.label :status, "Filtrar por estado", class: "block mb-2" %>
+        <%= form.select :status, options_for_select(MaintenanceCarService.statuses.keys.map { |s| [s.titleize, s] }, params[:status]), prompt: "Seleccione un estado", class: "border rounded-lg px-3 py-2" %>
+      </div>
+      <div>
+        <%= form.label :plate_number, "Buscar por placa", class: "block mb-2" %>
+        <%= form.text_field :plate_number, value: params[:plate_number], placeholder: "Número de placa", class: "border rounded-lg px-3 py-2" %>
+      </div>
+      <div class="mt-8">
+        <%= form.submit "Filtrar", class: "bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-400" %>
+      </div>
+
+      <div class="mt-10">
+        <%= link_to "Limpiar", maintenance_car_services_path, class: "px-5 py-2 bg-red-500 text-white rounded-md" %>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class="relative overflow-x-auto my-4">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+            <th scope="col" class="px-6 py-3">
+                Car ID
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Descripcion
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Estado
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Fecha
+            </th>
+            <th scope="col" class="px-6 py-3">
+                
+            </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @maintenance_car_services.each do |maintenance_car_service| %>
+          <%= render maintenance_car_service %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -11,7 +11,20 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.submit %>
+  <div class="flex-col">
+    <div>
+      <%= form.label :plate_label, "Agrega la Placa"%>
+      <%= form.text_field :plate_number,class: "w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" %>
+    </div>
+    <div>
+      <%= form.label :model_label, "Modelo del vehiculo"%>
+      <%= form.text_field :model, class: "w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" %>
+    </div>
+
+    <div>
+      <%= form.label :year_label, "Año"%>
+      <%= form.number_field :year, class: "w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" %>
+    </div>
   </div>
+  <%= form.submit class: "my-4 rounded-lg py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer"%>
 <% end %>

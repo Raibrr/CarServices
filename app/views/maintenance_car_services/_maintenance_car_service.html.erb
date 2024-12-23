@@ -1,0 +1,19 @@
+<div id="<%= dom_id maintenance_car_service %>">
+    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <%= maintenance_car_service.car_id%>
+        </th>
+        <td class="px-6 py-4">
+            <%= maintenance_car_service.description%>
+        </td>
+        <td class="px-6 py-4">
+            <%= maintenance_car_service.status%>
+        </td>
+        <td class="px-6 py-4">
+            <%= maintenance_car_service.date%>
+        </td>
+        <td class="px-6 py-4 text-white">
+            <%= link_to "Ver", maintenance_car_service, class: "ml-2 rounded-lg py-3 px-5 bg-blue-500 inline-block font-medium" %>
+        </td>
+    </tr>
+</div>

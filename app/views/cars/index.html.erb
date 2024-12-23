@@ -2,15 +2,18 @@
 
 <% content_for :title, "Cars" %>
 
-<h1>Cars</h1>
+<div class="flex-col">
+  <h1 class="font-bold text-xl m-2">Cars List</h1>
 
-<div id="cars">
-  <% @cars.each do |car| %>
-    <%= render car %>
-    <p>
-      <%= link_to "Show this car", car %>
-    </p>
-  <% end %>
+  <div id="cars" class="grid grid-cols-3 gap-2">
+    <% @cars.each do |car| %>
+      <%= render car %>
+    <% end %>
+    
+    <div class="flex justify-center items-center">
+      <button class="bg-green-400 text-white rounded-md mt-2 px-2">
+        <%= link_to "Add New car", new_car_path %>
+      </button>
+    </div>
 </div>
-
-<%= link_to "New car", new_car_path %>
+<%= link_to "Ver todos los servicios", maintenance_car_services_path , class: "ml-2 rounded-lg py-3 px-5 bg-blue-500 inline-block font-medium" %>

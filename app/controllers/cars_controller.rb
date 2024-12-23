@@ -8,6 +8,7 @@ class CarsController < ApplicationController
 
   # GET /cars/1 or /cars/1.json
   def show
+    @car_maintenance_services = MaintenanceCarService.where(car_id: @car)
   end
 
   # GET /cars/new
@@ -65,6 +66,6 @@ class CarsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def car_params
-      params.fetch(:car, {})
+      params.require(:car).permit(:plate_number, :model, :year)
     end
 end
