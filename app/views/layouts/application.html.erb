@@ -20,6 +20,11 @@
 
   <body>
     <main class="container mx-4 my-4 w-full">
+      <% if flash[:alert] %>
+        <div class="alert alert-alert text-red-500">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
   </body>

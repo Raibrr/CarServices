@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   #
   #
   root "cars#index"
+  post "/auth/login", to: "authentications#login"
+  get "/auth/login/new", to: "authentications#new"
+
 
   resources :cars do
     resources :maintenance_car_services, only: [ :new, :create ]
