@@ -17,8 +17,8 @@ Este proyecto es una aplicación Rails para gestionar autos y sus servicios de m
 Primero, clona este repositorio en tu máquina local:
 
 ```bash
-git clone https://github.com/tu_usuario/proyecto.git
-cd proyecto
+git clone https://github.com/Raibrr/CarServices.git
+cd CarServices
 ```
 
 ### 2. Instalar dependencias
