@@ -29,3 +29,6 @@ MaintenanceCarService.create([
   { car_id: cars[0].id, description: 'Revisión general', status: :completed, date: '2024-06-30' },
   { car_id: cars[1].id, description: 'Cambio de filtro de aire', status: :completed, date: '2023-10-05' }
 ])
+
+
+User.create(email: "admin@admin.com", password: "123456789")
